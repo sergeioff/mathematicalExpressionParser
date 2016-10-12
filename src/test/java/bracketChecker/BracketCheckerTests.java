@@ -38,4 +38,24 @@ public class BracketCheckerTests {
         assertEquals(12, bracketChecker.findBracketPair(18));
         assertEquals(27, bracketChecker.findBracketPair(29));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void notValidLineTest() {
+        BracketChecker willFail = new BracketChecker("(()");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void notValidLineTest1() {
+        BracketChecker willFail = new BracketChecker(")(");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void notValidLineTest2() {
+        BracketChecker willFail = new BracketChecker("{(})");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void notValidLineTest3() {
+        BracketChecker willFail = new BracketChecker("a");
+    }
 }

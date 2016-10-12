@@ -2,6 +2,9 @@ package bracketChecker;
 
 import java.util.HashMap;
 
+/**
+ * @author sergeioff
+ */
 class Bracket {
     private static final char[] OPENING_BRACKETS = {'(', '{', '['};
     private static final char[] CLOSING_BRACKETS = {')', '}', ']'};
@@ -15,6 +18,10 @@ class Bracket {
         put(']', '[');
     }};
 
+    /**
+     * @param character character to check
+     * @return true - if character is bracket
+     */
     static boolean isBracket(char character) {
         for (char bracket : OPENING_BRACKETS) {
             if (bracket == character) return true;
@@ -55,14 +62,23 @@ class Bracket {
         return false;
     }
 
+    /**
+     * @return character that represents this bracket
+     */
     char getBracketChar() {
         return bracketChar;
     }
 
+    /**
+     * @return pair for this bracket
+     */
     char getPairBracketChar() {
         return pairBracketChar;
     }
 
+    /**
+     * @return true - opening bracket; false - closing bracket
+     */
     boolean isOpeningBracket() {
         return isOpeningBracket;
     }
