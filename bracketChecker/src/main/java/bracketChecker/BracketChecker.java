@@ -40,7 +40,6 @@ public class BracketChecker {
             } else {
                 int startingBracketIdx = stack.pop();
                 pairs.put(startingBracketIdx, i);
-                pairs.put(i, startingBracketIdx);
             }
         }
 
@@ -53,7 +52,22 @@ public class BracketChecker {
      * @return index of pair bracket
      */
     public int findBracketPair(int bracketIdx) {
-        return getBracketPairs().get(bracketIdx);
+        Map<Integer, Integer> pairs = getBracketPairs();
+
+        int pairIdx = -1;
+
+        for (Map.Entry<Integer, Integer> entry : pairs.entrySet()) {
+            int key = entry.getKey();
+            int value = entry.getValue();
+
+            if (key == bracketIdx) {
+                pairIdx = value;
+            } else if (value == bracketIdx) {
+                pairIdx = key;
+            }
+        }
+
+        return pairIdx;
     }
 
     /**
