@@ -53,9 +53,4 @@ public class BracketCheckerTests {
     public void notValidLineTest2() {
         BracketChecker willFail = new BracketChecker("{(})");
     }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void notValidLineTest3() {
-        BracketChecker willFail = new BracketChecker("a");
-    }
 }
