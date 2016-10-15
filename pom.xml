@@ -16,6 +16,7 @@
     <modules>
         <module>bracketChecker</module>
         <module>parser</module>
+        <module>main</module>
     </modules>
 
     <build>

@@ -1,4 +1,4 @@
-package bracketChecker;
+package com.github.sergeioff.mathematicalExpressionParser.bracketChecker;
 
 import org.junit.Before;
 import org.junit.Test;
