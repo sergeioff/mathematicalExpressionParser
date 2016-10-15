@@ -1,4 +1,5 @@
 import org.junit.Test;
+import com.github.sergeioff.mathematicalExpressionParser.parser.Parser;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,6 +16,7 @@ public class ParserTests {
         assertEquals(2, new Parser("1 - (-1)").compute(), 0.0001);
         assertEquals(2, new Parser("1 --1").compute(), 0.0001);
         assertEquals(2, new Parser("1 - -1").compute(), 0.0001);
+        assertEquals(-2, new Parser("2 + 2 * -2").compute(), 0.0001);
     }
 
     @Test(expected = IllegalArgumentException.class)

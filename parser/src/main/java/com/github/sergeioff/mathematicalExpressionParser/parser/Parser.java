@@ -1,6 +1,6 @@
-package parser;
+package com.github.sergeioff.mathematicalExpressionParser.parser;
 
-import bracketChecker.BracketChecker;
+import com.github.sergeioff.mathematicalExpressionParser.bracketChecker.BracketChecker;
 
 import java.util.*;
 import java.util.regex.Pattern;
@@ -99,7 +99,8 @@ public class Parser {
                     Double leftPart = Double.parseDouble(expressionBuilder.substring(++leftIdx, operatorIdx));
 
                     int rightIdx = operatorIdx + 1;
-                    while (rightIdx < expressionBuilder.length() && !isOperator(Character.toString(expressionBuilder.charAt(rightIdx)))) {
+                    while (rightIdx < expressionBuilder.length() &&
+                            (!isOperator(Character.toString(expressionBuilder.charAt(rightIdx)))) || (rightIdx - operatorIdx == 1)) {
                         rightIdx++;
                     }
 
