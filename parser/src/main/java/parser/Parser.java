@@ -1,3 +1,5 @@
+package parser;
+
 import bracketChecker.BracketChecker;
 
 import java.util.*;
