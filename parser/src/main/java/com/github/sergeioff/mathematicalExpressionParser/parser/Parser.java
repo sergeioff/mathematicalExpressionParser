@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  */
 public class Parser {
     private final Pattern validCharsPattern = Pattern.compile("[^0-9+-/*.(){}\\[\\]%\\^ ]");
-    private final String[] OPERATORS = {"+", "-", "*", "/", "%"};
+    private final String[] OPERATORS = {"+", "-", "*", "/", "%", "^"};
     private String line;
     private StringBuilder lineToParse;
 
