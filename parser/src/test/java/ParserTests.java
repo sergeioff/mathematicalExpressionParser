@@ -17,6 +17,9 @@ public class ParserTests {
         assertEquals(2, new Parser("1 --1").compute(), 0.0001);
         assertEquals(2, new Parser("1 - -1").compute(), 0.0001);
         assertEquals(-2, new Parser("2 + 2 * -2").compute(), 0.0001);
+        assertEquals(100 % 6, new Parser("100 % 6").compute(), 0.0001);
+        assertEquals(1024, new Parser("2 ^ 10").compute(), 0.0001);
+        assertEquals(512, new Parser("2 ^ (10 - 1)").compute(), 0.0001);
     }
 
     @Test(expected = IllegalArgumentException.class)

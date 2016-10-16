@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
  * @author sergeioff
  */
 public class Parser {
-    private final Pattern validCharsPattern = Pattern.compile("[^0-9+-/*.(){}\\[\\] ]");
-    private final String[] OPERATORS = {"+", "-", "*", "/"};
+    private final Pattern validCharsPattern = Pattern.compile("[^0-9+-/*.(){}\\[\\]%\\^ ]");
+    private final String[] OPERATORS = {"+", "-", "*", "/", "%"};
     private String line;
     private StringBuilder lineToParse;
 
@@ -86,7 +86,7 @@ public class Parser {
      */
     private double processSimpleExpression(String line) {
         StringBuilder expressionBuilder = new StringBuilder(line);
-        final String[] PRECEDENCE_OPERATORS = {"*", "/"};
+        final String[] PRECEDENCE_OPERATORS = {"*", "/", "%", "^"};
 
         try {
             for (String operator : PRECEDENCE_OPERATORS) {
@@ -106,19 +106,24 @@ public class Parser {
 
                     Double rightPart = Double.parseDouble(expressionBuilder.substring(operatorIdx + 1, rightIdx));
 
-                    double value;
+                    double value = 0;
                     switch (operator) {
                         case "*":
                             value = leftPart * rightPart;
-                            expressionBuilder.delete(leftIdx, rightIdx);
-                            expressionBuilder.insert(leftIdx, value);
                             break;
                         case "/":
                             value = leftPart / rightPart;
-                            expressionBuilder.delete(leftIdx, rightIdx);
-                            expressionBuilder.insert(leftIdx, value);
+                            break;
+                        case "%":
+                            value = leftPart % rightPart;
+                            break;
+                        case "^":
+                            value = Math.pow(leftPart, rightPart);
                             break;
                     }
+
+                    expressionBuilder.delete(leftIdx, rightIdx);
+                    expressionBuilder.insert(leftIdx, value);
                 }
             }
 
